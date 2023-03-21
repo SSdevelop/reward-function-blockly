@@ -1,0 +1,32 @@
+{
+  "name": "fyp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm install",
+    "deploy": "gh-pages -d ."
+  },
+  "author": "Srijan",
+  "license": "ISC",
+  "blocklyDemoConfig": {
+    "title": "Generate JavaScript",
+    "description": "Turn blocks into code and execute it.",
+    "files": [
+      "index.html",
+      "./node_modules/blockly/*_compressed.js",
+      "./node_modules/blockly/*_compressed.js.map",
+      "./node_modules/blockly/msg/en.js",
+      "./node_modules/blockly/media/*"
+    ]
+  },
+  "dependencies": {
+    "blockly": "^9.2.1",
+    "prismjs": "^1.29.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
