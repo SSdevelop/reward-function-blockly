@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     element: <FreePlay />,
     errorElement: <Error />
   }
-], { basename: '/tutorial' });
+], { basename: '/reward-function-blockly' });
 
 ReactDOM.render(
   <React.StrictMode>
