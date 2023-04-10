@@ -13,11 +13,13 @@ import BlocklySpace from "../components/BlocklySpace";
 import { Prism as SyntaxHighLighter } from "react-syntax-highlighter";
 import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { copyCode, downloadCode, isLoggedIn } from "../helper/helper";
+import { useNavigate } from "react-router-dom";
 
 const FreePlay = () => {
   const [xml, setXml] = useState("");
   const [pythonCode, setPythonCode] = useState("");
   // const [auth, setAuth] = useState(false);
+  const navigator = useNavigate();
 
   // useEffect(() => {
   //   isLoggedIn().then(res => {
@@ -35,6 +37,9 @@ const FreePlay = () => {
           <Typography varient="h6" component="div" sx={{ flexGrow: 1, mr: 2 }}>
             Free Play
           </Typography>
+          <Button color="inherit" onClick={() => navigator('/')}>
+              Go Home
+          </Button>
           <IconButton
             size="large"
             aria-label="account of current user"
