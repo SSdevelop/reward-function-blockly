@@ -351,7 +351,7 @@ export const toolbox = {
         },
         {
           kind: "BLOCK",
-          type: "waypoint_init",
+          type: "waypoints_init",
         },
         {
           kind: "BLOCK",
@@ -426,7 +426,7 @@ export const toolbox = {
         },
         {
           kind: "BLOCK",
-          type: "waypoint_access",
+          type: "waypoints_access",
         },
         {
           kind: "BLOCK",
