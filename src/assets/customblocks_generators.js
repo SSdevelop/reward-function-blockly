@@ -10,7 +10,7 @@ pythonGenerator["reward_function"] = function(block) {
         return code;
     }
     var code =
-      "import math\ndef reward_function(params):\n" + statements_code + "\n  return float(reward)\n";
+      "\ndef reward_function(params):\n" + statements_code + "\n  return float(reward)\n";
     return code;
 };
 
