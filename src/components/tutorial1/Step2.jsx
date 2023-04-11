@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import onTrack from "../../assets/images/all_wheels_on_track_true.png";
 import ofTrack from "../../assets/images/all_wheels_on_track_false.png";
-import vid from "../../assets/videos/tut1_step2.mov";
+import vid from "../../assets/videos/tut1_step2.mp4";
 
 const Step2 = () => {
   return (

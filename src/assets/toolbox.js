@@ -349,6 +349,14 @@ export const toolbox = {
 
           type: "markers_init",
         },
+        {
+          kind: "BLOCK",
+          type: "waypoint_init",
+        },
+        {
+          kind: "BLOCK",
+          type: "closest_waypoints_init"
+        },
       ],
       name: "Initializers",
       colour: "#5b67a6",
@@ -416,6 +424,26 @@ export const toolbox = {
 
           type: "marker3_access",
         },
+        {
+          kind: "BLOCK",
+          type: "waypoint_access",
+        },
+        {
+          kind: "BLOCK",
+          type: "closest_waypoints_access"
+        },
+        {
+          kind: "BLOCK",
+          type: "get_points"
+        },
+        {
+          kind: "BLOCK",
+          type: "get_waypoints_at"
+        },
+        {
+          kind: "BLOCK",
+          type: "get_track_direction"
+        }
       ],
       name: "Access Parameters",
       colour: "#5b67a5",
@@ -447,6 +475,10 @@ export const toolbox = {
         {
           kind: "BLOCK",
           type: 'check_steering',
+        },
+        {
+          kind: "BLOCK",
+          type: 'check_heading',
         }
       ],
       name: "Checks",

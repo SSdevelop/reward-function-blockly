@@ -1,11 +1,16 @@
 // import * as Blockly from 'blockly';
 import { pythonGenerator } from 'blockly/python.js';
+import { getBlocks } from './customblocks';
 
 pythonGenerator["reward_function"] = function(block) {
+    let blocks = getBlocks();
     var statements_code = pythonGenerator.statementToCode(block, "code");
-    // TODO: Assemble Python into code variable.
+    if (blocks.includes("get_track_direction")) {
+        var code = "import math\ndef reward_function(params):\n" + statements_code + "\n  return float(reward)\n";
+        return code;
+    }
     var code =
-      "def reward_function(params):\n" + statements_code + "\n  return float(reward)\n";
+      "import math\ndef reward_function(params):\n" + statements_code + "\n  return float(reward)\n";
     return code;
 };
 
@@ -30,7 +35,9 @@ const parameters = [
     "steering_angle",
     "heading",
     "crashed",
-    "track_width"
+    "track_width",
+    "waypoints",
+    "closest_waypoints",
 ];
 parameters.forEach((parameter) => {
     pythonGenerator[`${parameter}_init`] = function (block) {
@@ -91,6 +98,27 @@ for(let i = 0; i < 3; i++) {
 pythonGenerator['check_steering'] = function(block) {
     let number_angle = block.getFieldValue('ANGLE');
     let code = `steering_angle = abs(params[\"steering_angle\"])\nSTEERING_ANGLE_THRESHOLD = ${number_angle}\nif steering_angle > STEERING_ANGLE_THRESHOLD:\n  reward *= 0.8\n`;
+    return code;
+}
+
+pythonGenerator['get_points'] = function(block) {
+    let code = 'prev_point = waypoints[closest_waypoints[0]]\nnext_point = waypoints[closest_waypoints[1]]\n';
+    return code;
+}
+
+pythonGenerator['get_waypoints_at'] = function(block) {
+    let index = block.getFieldValue('INDEX');
+    let code = `waypoints[${index}]`;
+    return [code, pythonGenerator.ORDER_NONE];
+}
+
+pythonGenerator['get_track_direction'] = function(block) {
+    let code = 'track_direction = math.atan2(next_point[1] - prev_point[1], next_point[0] - prev_point[0])\ntrack_direction = math.degrees(track_direction)\n';
+    return code;
+}
+
+pythonGenerator['check_heading'] = function(block) {
+    let code = `heading = params['heading']\nheading_difference = abs(track_direction - heading)\nif heading_diffence > 180:\n  heading_diffence = 360 - heading_diffence\nHEADING_THRESHOLD = 10.0\nif heading_difference > HEADING_THRESHOLD:\n  reward *= 0.5\n`;
     return code;
 }
 

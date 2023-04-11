@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import vid from "../../assets/videos/tut1_step3.mov";
+import vid from "../../assets/videos/tut1_step3.mp4";
 
 const Step3 = () => {
   return (
